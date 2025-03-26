@@ -25,6 +25,7 @@ The frontend is deployed at: https://tanmay-proj.vercel.app/
 - **Responsive Design**: Works across desktop and mobile devices
 
 ## Technology Stack
+<img width="927" alt="Image" src="https://github.com/user-attachments/assets/3ce1703c-ca93-4562-b467-3dc69c20db0b" />
 
 ### Frontend
 - **React 18.2.0** with **Vite** as the build tool
