@@ -1,6 +1,6 @@
 # SQL Query Runner
 
-## Loom Link : 
+### Loom Link ( To be updated) : 
 https://www.loom.com/share/2435f7d82b3f4ff4a43ddb144968e080?sid=2fbe12bf-7b78-4012-ad32-513784458845
 
 ## Project Overview
@@ -10,6 +10,7 @@ This is a web-based application capable of running SQL queries and displaying th
 
 ### Backend Deployment
 The backend is deployed at: https://tanmayprojbackend.onrender.com
+Backend Github Link : https://github.com/tanmaygithub04/TanmayProjBackend
 
 ## Frontend Deployment 
 The frontend is deployed at: https://tanmay-proj.vercel.app/
