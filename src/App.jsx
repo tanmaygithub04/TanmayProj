@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from 'react';
 import QueryInput from './components/QueryInput';
 import ResultsTable from './components/ResultsTable';
 import QuerySelector from './components/QuerySelector';
+import BackendStatus from './components/BackendStatus';
 import { predefinedQueries } from './data/queries';
 import { SQLiteEngine } from './data/csvParser';
 import './App.css';
@@ -18,6 +19,7 @@ function App() {
   const [sqlEngine, setSqlEngine] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
   const [schema, setSchema] = useState([]);
+  const backendUrl = 'https://tanmayprojbackend.onrender.com';
   
   const currentQuery = useMemo(() => {
     return isCustomQuery 
@@ -39,7 +41,7 @@ function App() {
           await engine.initialize();
         } catch (initErr) {
           console.error('Failed to initialize backend:', initErr);
-          setError(`Failed to initialize backend: ${initErr.message}. Make sure the backend server is running.`);
+          setError(`Failed to connect to backend at tanmayprojbackend.onrender.com: ${initErr.message}. Please check if the server is running.`);
           setIsLoading(false);
           return;
         }
@@ -119,6 +121,7 @@ function App() {
     <div className="app-container">
       <header>
         <h1>SQL Query Runner</h1>
+        <BackendStatus isConnected={isInitialized} url={backendUrl} />
       </header>
       
       <main>
@@ -169,7 +172,7 @@ function App() {
           
           {!isInitialized && !error && (
             <div className="loading-message">
-              Initializing SQL engine and connecting to backend...
+              Initializing SQL engine and connecting to backend at <a href="https://tanmayprojbackend.onrender.com" target="_blank" rel="noopener noreferrer">tanmayprojbackend.onrender.com</a>...
             </div>
           )}
         </div>
@@ -185,7 +188,7 @@ function App() {
       </main>
       
       <footer>
-        <p>SQL Query Runner with Express/SQLite Backend</p>
+        <p>SQL Query Runner with Express/SQLite Backend at <a href={backendUrl} target="_blank" rel="noopener noreferrer">{backendUrl}</a></p>
       </footer>
     </div>
   );

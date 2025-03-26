@@ -69,7 +69,7 @@ export const validateSQLSyntax = (query) => {
 export class SQLiteEngine {
   constructor() {
     this.initialized = false;
-    this.apiBaseUrl = 'http://localhost:3001/api';
+    this.apiBaseUrl = 'https://tanmayprojbackend.onrender.com/api';
   }
   
   async initialize() {
