@@ -1,0 +1,20 @@
+.query-input-container {
+  margin-top: 10px;
+}
+
+.query-textarea {
+  width: 100%;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: #f8f8f8;
+}
+
+.query-textarea:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+} 

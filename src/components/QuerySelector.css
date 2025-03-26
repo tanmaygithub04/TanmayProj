@@ -1,0 +1,33 @@
+.query-selector {
+  margin-bottom: 10px;
+}
+
+.query-selector label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.query-selector select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  font-size: 14px;
+}
+
+.query-selector select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.query-description {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #666;
+} 
