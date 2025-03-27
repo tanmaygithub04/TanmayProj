@@ -1,7 +1,7 @@
 # SQL Query Runner
 
-### Loom Link ( To be updated) : 
-https://www.loom.com/share/2435f7d82b3f4ff4a43ddb144968e080?sid=2fbe12bf-7b78-4012-ad32-513784458845
+### Video Explanation Link: 
+https://youtu.be/qdd0VYCIFp4
 
 ## Project Overview
 
