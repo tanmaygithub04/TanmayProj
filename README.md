@@ -62,6 +62,14 @@ So the load time for the first time is around 170 - 200 ms seconds and all the c
 - **SQLite** database for query processing
 - **RESTful API** for query execution and schema retrieval
 
+## Cost effective and Scalable future approach:-
+Front end Design: 
+<img width="547" alt="Image" src="https://github.com/user-attachments/assets/c5c4204c-a4ea-4319-ba12-41914f35b5dc" />
+
+Backend Design: 
+<img width="482" alt="Image" src="https://github.com/user-attachments/assets/8aa5c97b-a05e-4ff1-acbb-8352eadcde26" />
+Note: I have given the current implementation in previous section this is for future ,I made the backend use sqlite for now , I did not go with pagination right now.
+
 ## Performance Optimizations
 
 Several optimizations were implemented to improve the application's performance:
