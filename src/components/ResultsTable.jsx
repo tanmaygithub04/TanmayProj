@@ -13,6 +13,7 @@ import './ResultsTable.css';
 const ResultsTable = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+  const [selectedFilterColumns, setSelectedFilterColumns] = useState([]);
 
   // Get column headers from the first row
   const columns = useMemo(() => {
@@ -26,15 +27,18 @@ const ResultsTable = ({ data }) => {
     
     let filteredData = [...data];
     
-    // this is the filtering section for the data according to the input
-    if (searchTerm) {
+    // Updated filtering section
+    if (searchTerm && selectedFilterColumns.length > 0) { // Check if columns are selected
       const lowercasedFilter = searchTerm.toLowerCase();
       filteredData = filteredData.filter(item => {
-        return Object.values(item).some(value => 
-          String(value).toLowerCase().includes(lowercasedFilter)
+        // Check only within selected columns
+        return selectedFilterColumns.some(columnName => 
+          item[columnName] !== null && item[columnName] !== undefined && // Ensure value exists
+          String(item[columnName]).toLowerCase().includes(lowercasedFilter)
         );
       });
     }
+    // End of updated filtering section
     
     // this is the sorting section for the data according to the selected column 
     if (sortConfig.key) {
@@ -50,7 +54,7 @@ const ResultsTable = ({ data }) => {
     }
     
     return filteredData;
-  }, [data, searchTerm, sortConfig]);
+  }, [data, searchTerm, sortConfig, selectedFilterColumns]);
   
   const requestSort = (key) => {
     let direction = 'ascending';
@@ -78,12 +82,38 @@ const ResultsTable = ({ data }) => {
         <div className="search-container">
           <Input
             type="text"
-            placeholder="Search results..."
+            placeholder="Filter results..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
         </div>
+        
+        <div className="column-filter-container">
+          <label>Filter by Columns:</label>
+          <div className="column-checkboxes">
+            {columns.map(column => (
+              <div key={column} className="column-checkbox-item">
+                <input
+                  type="checkbox"
+                  id={`filter-${column}`}
+                  value={column}
+                  checked={selectedFilterColumns.includes(column)}
+                  onChange={(e) => {
+                    const columnName = e.target.value;
+                    setSelectedFilterColumns(prev => 
+                      e.target.checked 
+                        ? [...prev, columnName] 
+                        : prev.filter(col => col !== columnName)
+                    );
+                  }}
+                />
+                <label htmlFor={`filter-${column}`}>{column}</label>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div className="table-stats">
           Showing {stats.filtered} of {stats.total} records
         </div>

@@ -1,31 +1,7 @@
 // src/data/csvParser.js
-import alasql from 'alasql';
 
-// Keep your existing parseCSV function for local data visualization if needed
-export const parseCSV = (csvText) => {
-  const lines = csvText.split('\n').filter(line => line.trim() !== '');
-  
-  if (lines.length === 0) return { headers: [], data: [] };
-  
-  const headers = lines[0].split(',').map(header => header.trim());
-  
-  const data = [];
-  for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split(',').map(value => value.trim());
-    if (values.length !== headers.length) continue;
-    
-    const row = {};
-    headers.forEach((header, index) => {
-      const value = values[index];
-      const numValue = Number(value);
-      row[header] = !isNaN(numValue) && value !== '' ? numValue : value;
-    });
-    
-    data.push(row);
-  }
-  
-  return { headers, data };
-};
+
+
 
 // Basic SQL syntax validator
 export const validateSQLSyntax = (query) => {

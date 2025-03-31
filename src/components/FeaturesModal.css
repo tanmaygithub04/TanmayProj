@@ -1,0 +1,65 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Close Button */
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.modal-close-button:hover {
+  color: #333;
+}
+
+/* Features List */
+.features-list {
+  list-style: disc;
+  padding-left: 25px;
+  margin: 0;
+  color: #555;
+}
+
+.features-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+} 
