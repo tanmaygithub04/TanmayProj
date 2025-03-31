@@ -164,7 +164,12 @@ function App() {
           </div>
           {/*  selecting what should be shown on main area*/}
           {showInitializingIndicator ? (
-            <div className="loading-indicator">Initializing...</div>
+            <div className="loading-indicator">
+              Initializing...
+              <span style={{ display: 'block', fontSize: '13px', marginTop: '5px', color: '#888' }}>
+                (Free tier backend may take a moment to wake up)
+              </span>
+            </div>
           ) : showExecutingIndicator ? (
             <div className="loading-indicator">Loading results...</div>
           ) : viewMode === 'results' ? (
