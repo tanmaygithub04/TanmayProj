@@ -1,8 +1,3 @@
-// src/data/csvParser.js
-
-
-
-
 // Basic SQL syntax validator
 export const validateSQLSyntax = (query) => {
   // Basic validation rules

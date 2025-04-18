@@ -151,7 +151,7 @@ function App() {
             {/* show execution time only in results view when not executing */}
             {viewMode === 'results' && loadTime !== null && !isExecuting && (
               <span className="performance-stats-inline">
-                (executed in {loadTime.toFixed(2)} ms)
+                (executed in {loadTime} ms)
               </span>
             )}
             <button

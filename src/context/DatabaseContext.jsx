@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { SQLiteEngine } from '../data/csvParser';
+import { SQLiteEngine } from '../data/SqlEngine';
 
 const DatabaseContext = createContext(null);
 

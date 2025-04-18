@@ -59,11 +59,6 @@ function queryReducer(state, action) {
         ...state,
         viewMode: state.viewMode === 'results' ? 'history' : 'results',
       };
-    case actionTypes.CLEAR_ERROR:
-       return {
-         ...state,
-         error: null,
-       };
     default:
       return state;
   }
@@ -79,7 +74,6 @@ export const QueryProvider = ({ children }) => {
        dispatch({ type: actionTypes.QUERY_ERROR, payload: { message: 'SQL engine not ready.' } });
        return;
     }
-
     dispatch({ type: actionTypes.QUERY_START });
 
     let historyEntry = {
@@ -89,13 +83,14 @@ export const QueryProvider = ({ children }) => {
       success: false,
       message: null,
     };
-
     try {
+      const startTime = Date.now();
       const result = await sqlEngine.executeQuery(query);
-      historyEntry.executionTime = result.executionTime; // Capture time even on failure
+      const executionTime = Date.now() - startTime; // Calculate execution time here
+      historyEntry.executionTime = executionTime; // Capture time even on failure
 
       if (result.success) {
-        dispatch({ type: actionTypes.QUERY_SUCCESS, payload: result });
+        dispatch({ type: actionTypes.QUERY_SUCCESS, payload: { data: result.data, executionTime: executionTime } }); // Correct payload structure
         historyEntry.success = true;
       } else {
         dispatch({ type: actionTypes.QUERY_ERROR, payload: { message: result.message } });
@@ -108,6 +103,7 @@ export const QueryProvider = ({ children }) => {
       historyEntry.message = errorMessage;
     } finally {
        // Add history entry regardless of success/failure
+       console.log("I am adding the history entry.");
        dispatch({ type: actionTypes.ADD_HISTORY, payload: { entry: historyEntry } });
     }
   }, [sqlEngine, isInitialized, dispatch]); // Include dispatch in dependencies
@@ -121,8 +117,6 @@ export const QueryProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialized && sqlEngine && state.queryHistory.length === 0) { // Only run once after init
        console.log("Executing initial default query...");
-       // Assuming predefinedQueries is accessible or passed down/imported
-       // Import predefinedQueries if needed here or pass via props
        const initialQuery = predefinedQueries[0].query; // Example: Get first predefined query
        executeQuery(initialQuery);
     }
@@ -146,3 +140,5 @@ export const useQueryContext = () => {
   }
   return context;
 };
+
+

@@ -1,6 +1,10 @@
 import React from 'react';
 import './FeaturesModal.css'; // We'll create this CSS file next
 
+const Component = ({hello , jhello1}) => {
+
+}
+
 const FeaturesModal = ({ isOpen, onClose }) => {
   if (!isOpen) {
     return null;
